@@ -4,7 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import { ColorRing } from 'react-loader-spinner';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
+const NotFoundPage = lazy(() => import('./components/NotFoundPage/NotFound'));
 const Navigation = lazy(() => import('./components/Navigation/Navigation'));
 const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage'));
 const MovieDetailsPage = lazy(() =>
