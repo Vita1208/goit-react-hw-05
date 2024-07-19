@@ -66,29 +66,39 @@ function MovieDetailsPage() {
         <h1 className="text-6xl my-6 font-bold">{movie.title}</h1>
         <div className="main-info flex gap-7">
           <div className="img-wrapper h-96 flex-[0_0_16rem]">
-            <img
-              src={imagePathBase + movie.poster_path}
-              alt={movie.title}
-              className="w-full h-full object-cover"
-            />
+            {movie.poster_path ? (
+              <img
+                src={imagePathBase + movie.poster_path}
+                alt={movie.title}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                No Image Available
+              </div>
+            )}
           </div>
           <div className="info flex-col w-full">
             <div className="tagline flex mb-5">
               <span className="key font-semibold flex-[1_1_30%]">Tagline:</span>
               <span className="value flex-[1_1_70%]">
-                {movie.tagline?.length <= 0 ? 'N/A' : movie.tagline}
+                {movie.tagline && movie.tagline.length > 0 ? movie.tagline : 'N/A'}
               </span>
             </div>
             <div className="genre flex mb-5">
               <span className="key font-semibold flex-[1_1_30%]">Genre:</span>
               <span className="value flex-[1_1_70%]">
-                {movie.genres.map(genre => genre.name).join(', ')}
+                {movie.genres && movie.genres.length > 0
+                  ? movie.genres.map(genre => genre.name).join(', ')
+                  : 'N/A'}
               </span>
             </div>
             <div className="producers flex mb-5">
               <span className="key font-semibold flex-[1_1_30%]">Producers:</span>
               <span className="value flex-[1_1_70%]">
-                {movie.production_companies.map(prod => prod.name).join(', ')}
+                {movie.production_companies && movie.production_companies.length > 0
+                  ? movie.production_companies.map(prod => prod.name).join(', ')
+                  : 'N/A'}
               </span>
             </div>
             <div className="overview flex mb-5">
@@ -137,6 +147,7 @@ function MovieDetailsPage() {
 }
 
 export default MovieDetailsPage;
+
 
 
 
